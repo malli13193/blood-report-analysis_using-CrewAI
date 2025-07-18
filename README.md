@@ -8,7 +8,6 @@
 
 This project is a generative AI system that automates the analysis of blood reports using **CrewAI**. It employs a multi-agent architecture where one agent extracts key health metrics from a PDF blood report, and another provides actionable health recommendations using external resources.
 
-Built as part of the **Wingify Software Pvt. Ltd. – AI Intern Debug Challenge**, this project demonstrates problem-solving, debugging, and integration skills using advanced AI tools.
 
 🔗 **Live Repo**: [https://github.com/malli13193/blood-report-analysis_using-CrewAI](https://github.com/malli13193/blood-report-analysis_using-CrewAI)
 
