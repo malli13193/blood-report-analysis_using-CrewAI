@@ -1,9 +1,7 @@
 # Project Setup and Execution Guide
-Sure! Here's the complete `README.md` file content — fully formatted with proper Markdown code blocks so you can copy it all in one go:
 
----
 
-````markdown
+
 # 🧠 Blood Report Analysis System using CrewAI
 
 ## 📌 Overview
@@ -61,14 +59,13 @@ Built as part of the **Wingify Software Pvt. Ltd. – AI Intern Debug Challenge*
   crewai
   crewai_tools
   pymupdf
-````
+
 
 * Removed `chromadb` entirely
 * Merged multiple files (`task.py`, `tool.py`, etc.) into a single `main.py` for easier debugging
 * Added `.env` support with OpenAI key
 * Switched to a new OpenAI account to resolve API quota errors
 
----
 
 ## 🧪 Sample Output
 
@@ -97,7 +94,7 @@ If given the opportunity or more time, the following enhancements are planned:
 
   * Use table-aware models to extract better horizontal data layout
 
----
+
 
 ## 📋 Setup Instructions
 
@@ -133,7 +130,6 @@ OPENAI_API_KEY=your_openai_key
 python main.py
 ```
 
----
 
 ## 👨‍💻 Author
 
@@ -145,11 +141,4 @@ Contact: [mallikarjunareddykanala2003@gmail.com](mailto:mallikarjunareddykanala2
 
 ## 📜 License
 
-This project is intended for learning and evaluation purposes as part of the Wingify AI Internship assignment.
-
-```
-
----
-
-✅ Now you can copy all of this and paste it directly into your `README.md`. Let me know if you also want me to push this into your GitHub automatically.
-```
+This project is intended for learning.
