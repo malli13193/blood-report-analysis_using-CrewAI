@@ -1,0 +1,25 @@
+{
+  "analysis_summary": {
+    "report_date": "2023-05-16",
+    "patient_info": {
+      "age": "30 Years",
+      "gender": "Male"
+    },
+    "key_findings": {
+      "hemoglobin": {
+        "value": "15.00",
+        "unit": "g/dL",
+        "reference_range": "13.00 - 17.00",
+        "status": "Normal"
+      },
+      "packed_cell_volume": {
+        "value": "45.0",
+        "unit": "%",
+        "reference_range": "40.0 - 54.0", 
+        "status": "Normal"
+      }
+    },
+    "overall_assessment": "Blood test results show normal values for most parameters tested.",
+    "areas_of_concern": []
+  }
+}

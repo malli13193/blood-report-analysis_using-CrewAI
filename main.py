@@ -17,7 +17,7 @@ load_dotenv()
 # os.environ["OPENAI_API_KEY"] = "OPENAI_API_KEY"
 # os.environ["OPENAI_MODEL_NAME"] = "gpt-3.5-turbo"
 # Instantiate tools
-docs_tool = DirectoryReadTool(directory=r'C:\Users\bhanu\Desktop\CREWAI-powered-Blood-Report-Analysis-main\data')
+docs_tool = DirectoryReadTool(directory='./data')
 file_tool = FileReadTool() #added as failsafe
 search_tool = SerperDevTool()
 web_rag_tool = WebsiteSearchTool()
@@ -44,6 +44,17 @@ Experienced_health_blogger = Agent(
     verbose=True
 )
 
+# Adding a third agent - Medical Doctor
+Medical_doctor = Agent(
+    role='Medical Doctor',
+    goal='Provide professional medical interpretation and clinical insights based on blood test results and health recommendations',
+    backstory='You are an experienced medical doctor with expertise in laboratory medicine and internal medicine. You can interpret complex blood test results, identify potential medical conditions, suggest follow-up tests, and provide clinical context for health recommendations. You focus on medical accuracy and safety.',
+    tools=[file_tool, docs_tool],
+    #model="gpt-3.5-turbo", 
+    allow_delegation=False,
+    verbose=True
+)
+
 # Define tasks
 analyse_blood_report_task = Task(
     description='The Blood Report Analyst will analyze the blood test report  provided in the input file. The analysis will focus on summarizing key health indicators and findings from the blood test.',
@@ -56,16 +67,25 @@ generate_feedback_and_URLs = Task(
     expected_output='The output will be a JSON file containing detailed health recommendations along with the URLs of the articles from which these recommendations are based off of.',
     agent= Experienced_health_blogger,
     context=[analyse_blood_report_task],
-    output_file=r'C:\Users\bhanu\Desktop\CREWAI-powered-Blood-Report-Analysis-main\output.json'
+    output_file='./output.json'
+)
+
+# Adding a new task for the Medical Doctor
+medical_review_task = Task(
+    description='The Medical Doctor will review the blood test analysis and health recommendations to provide professional medical insights, identify any potential medical conditions or concerns, suggest appropriate follow-up actions, and validate the safety of the recommendations.',
+    expected_output='The output will be a JSON file containing professional medical review, clinical interpretations, potential diagnoses, recommended follow-up tests or consultations, and medical validation of the health advice.',
+    agent=Medical_doctor,
+    context=[analyse_blood_report_task, generate_feedback_and_URLs],
+    output_file='./medical_review.json'
 )
 
 # Assemble a crew
 crew = Crew(
-    agents=[Blood_report_analyst, Experienced_health_blogger],
-    tasks=[analyse_blood_report_task, generate_feedback_and_URLs],
+    agents=[Blood_report_analyst, Experienced_health_blogger, Medical_doctor],
+    tasks=[analyse_blood_report_task, generate_feedback_and_URLs, medical_review_task],
     verbose=True
 )
-pdf_path = r'C:\Users\bhanu\Desktop\CREWAI-powered-Blood-Report-Analysis-main\data\blood_Report_Sample.pdf'
+pdf_path = './data/blood_Report_Sample.pdf'
 txt_path = os.path.splitext(pdf_path)[0] + ".txt"
 
 pdf_to_text(pdf_path, txt_path)

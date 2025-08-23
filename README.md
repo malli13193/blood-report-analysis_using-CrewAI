@@ -6,7 +6,7 @@
 
 ## 📌 Overview
 
-This project is a generative AI system that automates the analysis of blood reports using **CrewAI**. It employs a multi-agent architecture where one agent extracts key health metrics from a PDF blood report, and another provides actionable health recommendations using external resources.
+This project is a generative AI system that automates the analysis of blood reports using **CrewAI**. It employs a multi-agent architecture where three specialized agents work together: one extracts key health metrics from a PDF blood report, another provides actionable health recommendations using external resources, and a third provides professional medical validation and clinical insights.
 
 
 🔗 **Live Repo**: [https://github.com/malli13193/blood-report-analysis_using-CrewAI](https://github.com/malli13193/blood-report-analysis_using-CrewAI)
@@ -22,10 +22,14 @@ This project is a generative AI system that automates the analysis of blood repo
 1. **Convert PDF to Text** using `PyMuPDF`
 2. **Agent 1: Blood Report Analyst**
    - Summarizes critical medical data like Hemoglobin, RBC count, etc.
-3. **Agent 2: Health Blogger**
+3. **Agent 2: Health Advisor**
    - Searches medical sources and gives health recommendations
-4. **Output:**
+4. **Agent 3: Medical Doctor** ✨ *NEW*
+   - Provides professional medical interpretation and clinical insights
+   - Validates recommendations and suggests follow-up actions
+5. **Output:**
    - JSON file with recommendations and reference URLs
+   - Additional medical review with clinical insights
 
 ![Flow Diagram](flow_diagram.png)
 
@@ -68,11 +72,27 @@ This project is a generative AI system that automates the analysis of blood repo
 
 ## 🧪 Sample Output
 
-You can view the final output file `output.json` and visual summary:
+You can view the final output files:
+- `output.json` - Health recommendations with source URLs
+- `medical_review.json` - Professional medical review and clinical insights ✨ *NEW*
 
 ![Output Sample 1](output1.png)
 ![Output Sample 2](output2.png)
 ![Output Sample 3](output3.png)
+
+## 👥 Agent Details
+
+### 1. Blood Report Analyst
+- **Role**: Analyzes blood test reports and summarizes key health indicators
+- **Output**: JSON summary of blood test findings
+
+### 2. Health Advisor  
+- **Role**: Provides health recommendations based on analysis and web research
+- **Output**: JSON with health recommendations and source URLs
+
+### 3. Medical Doctor ✨ *NEW*
+- **Role**: Provides professional medical interpretation and clinical insights
+- **Output**: JSON with medical review, potential diagnoses, and follow-up recommendations
 
 ---
 
@@ -121,9 +141,17 @@ pip install -r requirements.txt
 
 ```env
 OPENAI_API_KEY=your_openai_key
+SERPER_API_KEY=your_serper_key  
+OPENAI_MODEL_NAME=gpt-3.5-turbo
 ```
 
-### 5. Run the main application
+### 5. Test the system (optional)
+
+```bash
+python demo.py
+```
+
+### 6. Run the main application
 
 ```bash
 python main.py
