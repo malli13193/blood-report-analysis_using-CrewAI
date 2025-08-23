@@ -1,0 +1,30 @@
+{
+  "health_recommendations": {
+    "general_health": [
+      {
+        "recommendation": "Maintain a balanced diet rich in iron and vitamins",
+        "source": "https://www.healthline.com/nutrition/iron-rich-foods",
+        "priority": "Medium"
+      },
+      {
+        "recommendation": "Regular exercise to maintain cardiovascular health",
+        "source": "https://www.mayoclinic.org/healthy-lifestyle/fitness/basics/fitness-basics/hlv-20049447",
+        "priority": "High"
+      }
+    ],
+    "dietary_suggestions": [
+      {
+        "recommendation": "Include leafy green vegetables for iron absorption",
+        "source": "https://www.nutrition.gov/topics/nutrition-and-health/iron",
+        "details": "Spinach, kale, and broccoli are excellent sources"
+      }
+    ],
+    "lifestyle_tips": [
+      {
+        "recommendation": "Get adequate sleep (7-9 hours per night)",
+        "source": "https://www.sleepfoundation.org/how-sleep-works/why-do-we-need-sleep",
+        "priority": "High"
+      }
+    ]
+  }
+}
